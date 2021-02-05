@@ -64,7 +64,7 @@
 
         <section class="hero">
             <h1 class="title">Эффективные решения<br> для вашего бизнеса</h1>
-            <button type="button" class="button">Заказать услугу</button>
+            <button type="button" class="button" data-modal-open>Заказать услугу</button>
         </section>
 
 <!--ADVANTAGES--> 
@@ -119,9 +119,18 @@
             <div class="container">
             <h2 class="title">Чем мы занимаемся</h2>
             <ul class="list section-list">
-                <li class="item"><img src="./images/activities/activ-1.jpg" alt="Разработчик набирает программный код" width="370" height="294"></li>
-                <li class="item"><img src="./images/activities/activ-2.jpg" alt="Разработка мобильных приложений" width="370" height="294"></li>
-                <li class="item"><img src="./images/activities/activ-3.jpg" alt="Дизайнер выбирает цвет" width="370" height="294"></li>
+                <li class="item activities-item">
+                    <img src="./images/activities/activ-1.jpg" alt="Разработчик набирает программный код" width="370" height="294">
+                    <p class="description">Десктопные приложения</p>
+                </li>
+                <li class="item activities-item">
+                    <img src="./images/activities/activ-2.jpg" alt="Разработка мобильных приложений" width="370" height="294">
+                    <p class="description">Мобильные приложения</p> 
+                </li>
+                <li class="item activities-item">
+                    <img src="./images/activities/activ-3.jpg" alt="Дизайнер выбирает цвет" width="370" height="294">
+                    <p class="description">Дизайнерские решения</p> 
+                </li>
             </ul>
             </div>
         </section>
@@ -394,6 +403,18 @@
         </div>
     </div>
 </footer>
-    
+
+<div class="backdrop is-hidden" data-modal>
+    <div class="modal">
+        <button type="button" class="modal-close-btn" data-modal-close>
+            <svg class="icon-close-btn" width="18" height="18">
+                <use href="./images/icons/sprite.svg#icon-close-btn"></use>
+            </svg>
+        </button>
+    </div>
+</div>
+
+<script src="./js/modal.js"></script>
+
 </body>
 </html>

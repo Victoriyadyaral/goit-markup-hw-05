@@ -62,6 +62,8 @@ img {
     --primary-font: Roboto, sans-serif;
     --logo-font: Raleway, sans-serif;
     --icon-color: #AFB1B8;
+    --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-duration: 250ms;
 }
 
 /* body */
@@ -109,6 +111,7 @@ overflow: hidden;
     font-weight: 700;
     font-size: 0;
     line-height: 1.192;
+    transition: cursor var(--transition-duration) var(--timing-function);
 }
 
 .logo:hover,
@@ -131,6 +134,7 @@ overflow: hidden;
 }
 
 .site-nav .link {  
+    position: relative;
     display: block;
     padding-top: 32px;
     padding-bottom: 32px;
@@ -140,6 +144,8 @@ overflow: hidden;
     font-weight: 500;
     line-height: 1.143;
     letter-spacing: 0.02em;
+
+    transition: color var(--transition-duration) var(--timing-function);
 }
 
 .site-nav .nav-item:not(:last-child) {
@@ -153,6 +159,18 @@ overflow: hidden;
 
 .site-nav .link.current {
     color: var(--accent-color);
+}
+
+.link.current::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background-color: var(--accent-color);
 }
 
 .contact {
@@ -172,6 +190,7 @@ overflow: hidden;
     font-weight: 500;
     line-height: 1.143;
     letter-spacing: 0.02em;
+    transition: color var(--transition-duration) var(--timing-function);
 }
 
 .contact .link:focus,
@@ -182,6 +201,7 @@ overflow: hidden;
 .nav-item .icon-mail {
     margin-right: 10px;
     fill: var(--primary-text-color);
+    transition: fill var(--transition-duration) var(--timing-function);
 }
 
 .nav-item  .link-mail{
@@ -197,6 +217,7 @@ overflow: hidden;
 .nav-item .icon-phone {
     margin-right: 10px;
     fill: var(--primary-text-color);
+    transition: fill var(--transition-duration) var(--timing-function);
 }
 
 .nav-item  .link-phone{
@@ -326,6 +347,26 @@ overflow: hidden;
     text-align: center;
 }
 
+.activities-item {
+    position: relative;
+}
+
+.activities-item .description {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding-top: 27px;
+    padding-bottom: 27px;
+    text-align: center;
+    font-family: Roboto;
+    font-weight: 700;
+    line-height: 1.143;
+    text-transform: uppercase;
+    color: var(--primary-white-color);
+    background-color: rgba(47, 48, 58, 0.8);
+}
+
 /*OUR TEAM*/
 
 .our-team{
@@ -385,10 +426,14 @@ overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    transform: rotate(0deg);
+    transition: background-color var(--transition-duration) var(--timing-function),
+                transform var(--transition-duration) var(--timing-function);
 }
 
 .icon-social {
     fill: var(--icon-color);
+    transition: fill var(--transition-duration) var(--timing-function);
 }
 
 .link:hover .icon-social,
@@ -400,6 +445,7 @@ overflow: hidden;
 .social-links-item .link:focus {
     background-color: var(--accent-color);
     outline: none;
+    transform: rotate(360deg);
 }
 
 /*CLIENTS*/
@@ -433,10 +479,12 @@ overflow: hidden;
     align-items: center;
     border: 1px solid var(--icon-color);
     border-radius: 4px;
+    transition: border-color var(--transition-duration) var(--timing-function);
 }
 
 .icon-clients {
     fill: var(--icon-color);
+    transition: fill var(--transition-duration) var(--timing-function);
 }
 
 .link:hover .icon-clients,
@@ -523,6 +571,8 @@ overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    transition: background-color var(--transition-duration) var(--timing-function);
 }
 
 .icon {
@@ -570,6 +620,9 @@ overflow: hidden;
     letter-spacing: 0.03em;
     text-align: center;
     cursor: pointer;
+    transition: color var(--transition-duration) var(--timing-function),
+                box-shadow var(--transition-duration) var(--timing-function), 
+                background-color var(--transition-duration) var(--timing-function);
 }
 
 .portfolio-button:focus,
@@ -614,13 +667,43 @@ overflow: hidden;
 
 .collection-item .link{
     display: inline-block;
+    transition: box-shadow var(--transition-duration) var(--timing-function);
 }
 
 .collection-item .link:hover,
 .collection-item .link:focus {
     cursor: pointer;
     outline: none;
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);    
+}
+
+.thumb {
+    position: relative;
+    overflow: hidden;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    padding: 63px 24px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(33, 150, 243, 0.9);
+    color: var(--primary-white-color);
+
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.556;
+
+    transform: translateY(100%);
+    transition: transform var(--transition-duration) var(--timing-function);
+}
+
+.link:hover .overlay,
+.link:focus .overlay {
+    transform: translateY(0);
 }
 
 .examples .title {
@@ -643,3 +726,55 @@ overflow: hidden;
     padding: 20px 24px;
 }
 
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: opacity var(--transition-duration) var(--timing-function);
+}
+
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    width: 528px;
+    height: 581px;
+    background-color: var(--primary-white-color);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    
+    transition: transform var(--transition-duration) var(--timing-function);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: var(--primary-white-color);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.backdrop.is-hidden .modal {
+    transform: translate(-50%, -50%) scale(0.5);      
+}
